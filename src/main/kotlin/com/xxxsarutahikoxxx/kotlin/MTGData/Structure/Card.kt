@@ -19,7 +19,7 @@ interface RefreshTable : CardData
 interface GameState : Info
 interface MarkerPool : Info
 interface BattleState : Info
-interface DrivenTable : MarkerPool, BattleState
+interface DrivenTable : GameState, MarkerPool, BattleState
 
 interface Card : RefreshTable, DrivenTable
 

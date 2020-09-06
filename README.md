@@ -64,7 +64,7 @@ MTG のカード・プロパティはその属性によってカテゴリーに�
 [GameState] : ゲームに関する情報 (e.g.) オーナー・ゾーン・タイムスタンプ <br>
 [MarkerPool] : カードに乗っているカウンター情報<br>
 [BattleState] : カードの戦闘に関する情報<br>
-[DrivenTable] : [MarkerPool]と[BattleState]を継承した駆動型データ部分<br>
+[DrivenTable] : [GameState] [MarkerPool] [BattleState]を継承した駆動型データ部分<br>
 
 [Card] : [RefreshTable]と[DrivenTable]を継承したカードデータ
 
