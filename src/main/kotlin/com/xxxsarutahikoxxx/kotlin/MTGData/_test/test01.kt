@@ -3,6 +3,7 @@ package com.xxxsarutahikoxxx.kotlin.MTGData._test
 import com.xxxsarutahikoxxx.kotlin.MTGData.Condition.*
 import com.xxxsarutahikoxxx.kotlin.MTGData.Structure.*
 import com.xxxsarutahikoxxx.kotlin.MTGData.CardSet.*
+import com.xxxsarutahikoxxx.kotlin.MTGData.Utils.CString
 import javax.swing.JFrame
 
 var out : Any?
@@ -10,7 +11,14 @@ var out : Any?
     set(value) { println(value) }
 
 
+
+
+
 fun main() {
+
+    CardImpl().apply {
+        (this as MutableInfo).name = CString("nanme")
+    }
 
     CardSets.decodeCardSet()
 

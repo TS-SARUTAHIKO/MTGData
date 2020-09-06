@@ -1,20 +1,11 @@
 package com.xxxsarutahikoxxx.kotlin.MTGData.Structure
 
-import kotlin.reflect.KProperty1
-
 
 interface Info {
     val property : Map<String, Any?>
 }
 interface MutableInfo : Info {
     val mutableProperty : MutableMap<String, Any?>
-
-    operator fun set(key : String, value : Any) {
-        mutableProperty[key] = value
-    }
-    operator fun <TYPE : Any> set(prop : KProperty1<out Info, TYPE>, value : TYPE){
-        set(prop.name, value)
-    }
 }
 
 

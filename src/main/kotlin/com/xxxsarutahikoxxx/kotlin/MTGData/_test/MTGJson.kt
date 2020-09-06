@@ -276,29 +276,30 @@ data class jCard(
         val reverseRelated : List<String> = listOf()
 ){
     fun toCard() : Card {
-        return CardImpl().also{
-            it[Card::name] = CString(name)
+        return (CardImpl() as MutableInfo).also {
+            it.name = CString(name)
 
-            it[Card::cmc] = convertedManaCost.toInt()
-            it[Card::symbols] = manaCost.replace("{", "")
+            it.cmc = convertedManaCost.toInt()
+
+            it.symbols = manaCost.replace("{", "")
                 .split("}").filter { it.isNotEmpty() }.map { ManaSymbols.of(it) }
 
-            it[Card::color] = colors.map { Colors.of(it) }.toSet()
-            it[Card::colorIdentity] = colorIdentity.map { Colors.of(it) }.toSet()
+            it.color = colors.map { Colors.of(it) }.toSet()
+            it.colorIdentity = colorIdentity.map { Colors.of(it) }.toSet()
 
-            it[Card::supertype] = supertypes.map { SuperTypes.of(it) }.toSet()
-            it[Card::cardtype] = types.map { CardTypes.of(it) }.toSet()
-            it[Card::subtype] = subtypes.map { SubTypes.of(it) }.toSet()
+            it.supertype = supertypes.map { SuperTypes.of(it) }.toSet()
+            it.cardtype = types.map { CardTypes.of(it) }.toSet()
+            it.subtype = subtypes.map { SubTypes.of(it) }.toSet()
 
-            it[Card::rarity] = Rarities.of(rarity)
+            it.rarity = Rarities.of(rarity)
 
-            it[Card::ruleText] = CString(text)
-            it[Card::flavorText] = CString(flavorText)
+            it.ruleText = CString(text)
+            it.flavorText = CString(flavorText)
 
-            it[Card::power] = power
-            it[Card::toughness] = toughness
-            it[Card::loyalty] = loyalty
-        }
+            it.power = power.toInt()
+            it.toughness = toughness.toInt()
+            it.loyalty = loyalty.toInt()
+        } as Card
     }
 }
 @Serializable
