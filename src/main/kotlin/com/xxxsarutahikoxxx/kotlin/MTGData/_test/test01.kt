@@ -12,11 +12,9 @@ var out : Any?
 
 
 
-
-
 fun main() {
 
-    CardImpl().apply {
+    CardDataImpl().apply {
         (this as MutableInfo).name = CString("nanme")
     }
 

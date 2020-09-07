@@ -1,7 +1,6 @@
 package com.xxxsarutahikoxxx.kotlin.MTGData._test
 
 import com.xxxsarutahikoxxx.kotlin.MTGData.Structure.*
-import com.xxxsarutahikoxxx.kotlin.MTGData.Structure.CardImpl
 import com.xxxsarutahikoxxx.kotlin.MTGData.CardSet.CardSet
 import com.xxxsarutahikoxxx.kotlin.MTGData.CardSet.CardSets
 import com.xxxsarutahikoxxx.kotlin.MTGData.Utils.CString
@@ -208,7 +207,7 @@ data class jCardSet(
     fun toCardSet() : CardSet {
         return CardSets(
             CardSetTypes.of(code),
-            cards.filter { "★" !in it.number }.map { it.toCard() } // ホイル専用のデータは除去する
+            cards.filter { "★" !in it.number }.map { it.toCardData() } // ホイル専用のデータは除去する
         )
     }
 }
@@ -275,8 +274,8 @@ data class jCard(
         val isPromo : Boolean = false,
         val reverseRelated : List<String> = listOf()
 ){
-    fun toCard() : Card {
-        return (CardImpl() as MutableInfo).also {
+    fun toCardData() : CardData {
+        return (CardDataImpl() as MutableInfo).also {
             it.name = CString(name)
 
             it.cmc = convertedManaCost.toInt()
@@ -299,7 +298,7 @@ data class jCard(
             it.power = power.toInt()
             it.toughness = toughness.toInt()
             it.loyalty = loyalty.toInt()
-        } as Card
+        } as CardData
     }
 }
 @Serializable
