@@ -304,4 +304,4 @@ internal val _RFamily by lazy { ManaSymbols.values().filter { it.codes.any { "R"
 internal val _GFamily by lazy { ManaSymbols.values().filter { it.codes.any { "G" in it } } }
 
 
-//internal val _initTypes = true
+internal val _initTypes = true

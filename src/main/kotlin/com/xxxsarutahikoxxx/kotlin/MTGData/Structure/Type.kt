@@ -260,4 +260,4 @@ class PTMarkerTypes(codes : List<String>) : BaseImpl(codes), PTMarkerType {
 }
 
 
-//internal val _inits = _initTypes && _initSubTypes && _initOthers && _initCardSets
+internal val _inits = _initTypes && _initSubTypes && _initOthers && _initCardSets

@@ -790,4 +790,4 @@ val PlaneTypes.Companion.Xerex : PlaneType get() = _Xerex
 val PlaneTypes.Companion.Zendikar : PlaneType get() = _Zendikar
 
 
-//internal val _initSubTypes = true
+internal val _initSubTypes = true

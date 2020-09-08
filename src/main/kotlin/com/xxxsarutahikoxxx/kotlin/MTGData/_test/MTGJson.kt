@@ -9,16 +9,17 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
+import java.lang.Exception
 
 
 fun CardSets.Companion.decodeCardSet(line : String) : CardSet {
-//    _inits
+    _inits
 
     val set : jCardSet = Json { ignoreUnknownKeys = false }.decodeFromString<jCardSetHost>(line).data
     return set.toCardSet()
 }
 fun CardSets.Companion.decodeCardSet(){
-//    _inits
+    _inits
 
     val stream = ClassLoader.getSystemResource("AllPrintings.json").openStream()
 
@@ -290,16 +291,19 @@ data class jCard(
             it.cardtype = types.map { CardTypes.of(it) }.toSet()
             it.subtype = subtypes.map { SubTypes.of(it) }.toSet()
 
+            it.cardset = CardSetTypes.of(setCode)
             it.rarity = Rarities.of(rarity)
 
             it.ruleText = CString(text)
             it.flavorText = CString(flavorText)
 
-            it.power = power.toInt()
-            it.toughness = toughness.toInt()
-            it.loyalty = loyalty.toInt()
+            it.power = power.toINT
+            it.toughness = toughness.toINT
+            it.loyalty = loyalty.toINT
         } as CardData
     }
+
+    private val String.toINT get() = try{ Regex("[-0-9]").findAll(this).joinToString("").toInt() }catch (e : Exception){ 0 }
 }
 @Serializable
 data class jForeignData(

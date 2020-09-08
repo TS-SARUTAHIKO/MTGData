@@ -225,4 +225,4 @@ val CardSetTypes.Companion.Ixalan : CardSetType get() = _Ixalan
 val CardSetTypes.Companion.Zendikar : CardSetType get() = _Zendikar
 val CardSetTypes.Companion.Zendikar_Rising : CardSetType get() = _Zendikar_Rising
 
-//internal val _initCardSets = true
+internal val _initCardSets = true
